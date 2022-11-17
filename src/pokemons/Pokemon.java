@@ -5,18 +5,20 @@ import java.util.Random;
 public abstract class Pokemon {
 	//ATTRIBUTS
 	private String nom;
-	private int niveau;
-	private int hp;
+	protected int hp;
 	private int atk;
-	private Random r = new Random();
+	private int niveau;
+	protected TypePokemon type;
 	static int nMax = 10;
+	private Random r = new Random();
 	
 	//CONSTRUCTEUR
-	public Pokemon(String nom) {
+	public Pokemon(String nom, TypePokemon type) {
 		this.nom = nom;
 		this.niveau = r.nextInt(nMax+1);
 		this.hp = 2*this.niveau;
 		this.atk = (this.niveau/2)+1;
+		this.type = type;
 	}
 
 	//GETTERS AND SETTERS  
@@ -76,6 +78,20 @@ public abstract class Pokemon {
 		this.atk = atk;
 	}
 	
+	/**
+	 * @return the type
+	 */
+	public TypePokemon getType() {
+		return type;
+	}
+
+	/**
+	 * @param type the type to set
+	 */
+	public void setType(TypePokemon type) {
+		this.type = type;
+	}
+
 	//MÉTHODES 
 	public boolean isKO() {
 		return this.hp == 0;
@@ -93,7 +109,8 @@ public abstract class Pokemon {
 		return ("Je m'appelle " + getNom() + 
 				" !\n je suis de niveau " + getNiveau() +
 				"\n j'ai " + getHp() + " points de vie\n" +
-				" mon attaque de base et de " + getAtk());
+				" mon attaque de base et de " + getAtk() + 
+				" je suis de type " + getType());
 	}
 	
 	private String prefixe () {

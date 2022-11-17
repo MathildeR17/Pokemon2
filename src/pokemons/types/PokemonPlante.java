@@ -3,10 +3,11 @@ package pokemons.types;
 import pokemons.Pokemon;
 import pokemons.TypePokemon;
 
-public class PokemonFeu extends Pokemon{
-	
-	public PokemonFeu(String nom) {
-		super(nom, TypePokemon.FEU);
+public class PokemonPlante extends Pokemon{
+
+	private TypePokemon type;
+	public PokemonPlante(String nom) {
+		super(nom, TypePokemon.PLANTE);
 	}
 	
 	public void attaquer(Pokemon p) {
@@ -16,7 +17,7 @@ public class PokemonFeu extends Pokemon{
 	}
 	
 	public void subir(Pokemon p) {
-		if(p.getType() == TypePokemon.EAU) {
+		if(p.getType() == TypePokemon.FEU) {
 			this.setHp(this.getHp() - 2*(p.getAtk()));
 			log("C'est très efficace!");
 		}else {
@@ -24,4 +25,5 @@ public class PokemonFeu extends Pokemon{
 			log("C'est peu efficace...");
 		}
 	}
+
 }
