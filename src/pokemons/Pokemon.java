@@ -2,7 +2,7 @@ package pokemons;
 
 import java.util.Random;
 
-public class Pokemon {
+public abstract class Pokemon {
 	//ATTRIBUTS
 	private String nom;
 	private int niveau;
@@ -85,10 +85,9 @@ public class Pokemon {
 		this.hp = 2*this.niveau;
 	}
 	
-	public void attaquer (Pokemon p) {
-		p.hp -= this.atk;
-		log("J'attaque " + p.getNom());
-	}
+	public abstract void attaquer (Pokemon p);
+	
+	public abstract void subir(Pokemon p);
 	
 	public String toString() {
 		return ("Je m'appelle " + getNom() + 
